@@ -172,3 +172,28 @@ $ curl -X GET "http://localhost:9200/user/_search" -H 'Content-Type: application
   "age" : "48"
 }}]}}
 ```
+
+### Delete Document
+
+```
+$ curl -X DELETE "http://localhost:9200/user/_doc/n29-FHAByJp-ps0e73Ga"
+```
+
+```
+{"_index":"user","_type":"_doc","_id":"n29-FHAByJp-ps0e73Ga","_version":2,"result":"deleted","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":2,"_primary_term":2}
+```
+
+```
+$ curl -X GET "http://localhost:9200/user/_search" -H 'Content-Type: application/json' \
+-d '{
+  "query": {
+    "match": {
+      "name": "Tanaka"
+    }
+  }
+}'
+```
+
+```
+{"took":382,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+```
