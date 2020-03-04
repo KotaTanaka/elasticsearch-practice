@@ -1,0 +1,61 @@
+version: "3"
+services:
+  elasticsearch_1:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    container_name: elasticsearch_practice_1
+    hostname: elasticsearch_1
+    environment:
+      - node.name=elasticsearch_1
+      - discovery.seed_hosts=elasticsearch_2,elasticsearch_3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/es1_data:/usr/share/elasticsearch/data/
+      - ./config/elasticsearch-3nodes.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - 9200:9200
+    networks:
+      - elasticsearch
+  elasticsearch_2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    container_name: elasticsearch_practice_2
+    hostname: elasticsearch_2
+    environment:
+      - node.name=elasticsearch_2
+      - discovery.seed_hosts=elasticsearch_1,elasticsearch_3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/es2_data:/usr/share/elasticsearch/data/
+      - ./config/elasticsearch-3nodes.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    networks:
+      - elasticsearch
+  elasticsearch_3:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    container_name: elasticsearch_practice_3
+    hostname: elasticsearch_3
+    environment:
+      - node.name=elasticsearch_3
+      - discovery.seed_hosts=elasticsearch_1,elasticsearch_2
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/es3_data:/usr/share/elasticsearch/data/
+      - ./config/elasticsearch-3nodes.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    networks:
+      - elasticsearch
+networks:
+  elasticsearch:
+    driver: bridge
