@@ -1,4 +1,5 @@
 # elasticsearch-practice
+
 Elasticsearch 個人練習用
 
 ## Technology
@@ -7,14 +8,26 @@ Elasticsearch 個人練習用
 
 ## Getting Started
 
-* Launch Elasticsearch
+* Launch Elasticsearch - *Single Node*
 
 ```
 $ docker-compose up
 ```
 
-* Stop Elasticsearch
+* Stop Elasticsearch - *Single Node*
 
 ```
 $ docker-compose down
+```
+
+* Launch Elasticsearch - *Multi Nodes*
+
+```
+$ docker-compose -f docker-compose-3nodes.yml up
+```
+
+* Stop Elasticsearch - *Multi Nodes*
+
+```
+$ docker-compose -f docker-compose-3nodes.yml down
 ```
