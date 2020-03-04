@@ -1,0 +1,9 @@
+cluster.name: elasticsearch-practice-cluster-3nodes
+cluster.initial_master_nodes:
+  - elasticsearch_1
+  - elasticsearch_2
+  - elasticsearch_3
+node.attr.host: ${HOSTNAME}
+node.max_local_storage_nodes: 3
+network.host: 0.0.0.0
+discovery.zen.minimum_master_nodes: 2
