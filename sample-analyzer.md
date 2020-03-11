@@ -22,7 +22,7 @@ $ curl -X GET "http://localhost:9200/member/_settings?pretty"
 $ curl -X POST 'http://localhost:9200/member/_analyze?pretty' -H 'Content-Type: application/json' \
 -d '{
   "analyzer": "ja_text_analyzer",
-  "text": "RUBY"
+  "text": "ワチキはﾊﾟﾘﾋﾟ"
 }'
 ```
 
