@@ -53,7 +53,7 @@ yellow open   user  TpURqIE_Sl23NcojGzMIaw   1   1          0            0      
 ### Show mapping
 
 ```
-$ curl -X GET "http://localhost:9200/user/_mapping?pretty&pretty"
+$ curl -X GET "http://localhost:9200/user/_mapping?pretty"
 ```
 
 ```
