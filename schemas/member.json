@@ -1,0 +1,53 @@
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "analysis": {
+        "tokenizer": {
+          "ja_text_tokenizer": {
+            "type": "kuromoji_tokenizer",
+            "mode": "search"
+          }
+        },
+        "analyzer": {
+          "ja_text_analyzer": {
+            "tokenizer": "ja_text_tokenizer",
+            "type": "custom",
+            "char_filter": [
+              "icu_normalizer"
+            ],
+            "filter": [
+              "kuromoji_part_of_speech"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "member_id": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text",
+        "analyzer": "ja_text_analyzer"
+      },
+      "group": {
+        "type": "text",
+        "analyzer": "ja_text_analyzer"
+      },
+      "age": {
+        "type": "integer"
+      },
+      "nickname": {
+        "type": "text"
+      },
+      "catch_phraze": {
+        "type": "text",
+        "analyzer": "ja_text_analyzer"
+      }
+    }
+  }
+}
