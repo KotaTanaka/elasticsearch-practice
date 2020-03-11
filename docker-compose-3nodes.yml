@@ -1,7 +1,7 @@
 version: "3"
 services:
   elasticsearch_1:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    build: .
     container_name: elasticsearch_practice_1
     hostname: elasticsearch_1
     environment:
@@ -21,7 +21,7 @@ services:
     networks:
       - elasticsearch
   elasticsearch_2:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    build: .
     container_name: elasticsearch_practice_2
     hostname: elasticsearch_2
     environment:
@@ -39,7 +39,7 @@ services:
     networks:
       - elasticsearch
   elasticsearch_3:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    build: .
     container_name: elasticsearch_practice_3
     hostname: elasticsearch_3
     environment:
